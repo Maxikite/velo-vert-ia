@@ -1,4 +1,5 @@
 # Utiliser une image Go officielle pour builder
+# Version corrigée pour Railway - v2
 FROM golang:1.21-alpine AS builder
 
 # Définir le répertoire de travail

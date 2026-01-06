@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: velo-vert
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    port: 8080
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 8080
