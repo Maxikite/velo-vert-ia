@@ -14,5 +14,10 @@
   ],
   "env": {
     "GO_VERSION": "1.21"
+  },
+  "functions": {
+    "main.go": {
+      "runtime": "go1.21"
+    }
   }
 }

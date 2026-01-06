@@ -1,4 +1,4 @@
-# Dockerfile pour Railway - Version finale corrigée
+# Dockerfile pour Railway - Version finale corrigée (Go 1.21)
 FROM golang:1.21-alpine AS builder
 
 WORKDIR /app
