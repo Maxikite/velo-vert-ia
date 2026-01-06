@@ -5,7 +5,7 @@ FROM golang:1.21-alpine AS builder
 WORKDIR /app
 
 # Copier les fichiers Go
-COPY go.mod go.sum ./
+COPY go.mod ./
 RUN go mod download
 
 # Copier le code source
