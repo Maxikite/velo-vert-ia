@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "velo_id": 1,
+    "nom_velo": "VTT Montagne Expert",
+    "nom_client": "Maxime ATTIMONT",
+    "email": "max@gmail.com",
+    "telephone": "123",
+    "date_debut": "2025-12-01T00:00:00Z",
+    "date_fin": "2025-12-03T00:00:00Z",
+    "prix_total": 50,
+    "status": "En attente"
+  }
+]

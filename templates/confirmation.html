@@ -1,0 +1,58 @@
+{{define "content"}}
+<section class="section">
+    <div class="container">
+        <div class="confirmation">
+            {{if .Message}}
+            <div class="alert alert-success">
+                {{.Message}}
+            </div>
+            {{end}}
+
+            {{if .Reservation}}
+            <h1>Réservation confirmée</h1>
+
+            <div class="reservation-details">
+                <h2>Détails de votre réservation</h2>
+
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <strong>Référence :</strong> #{{.Reservation.ID}}
+                    </div>
+                    <div class="detail-item">
+                        <strong>Client :</strong> {{.Reservation.NomClient}}
+                    </div>
+                    <div class="detail-item">
+                        <strong>Email :</strong> {{.Reservation.Email}}
+                    </div>
+                    <div class="detail-item">
+                        <strong>Téléphone :</strong> {{.Reservation.Telephone}}
+                    </div>
+                    <div class="detail-item">
+                        <strong>Date de début :</strong> {{.Reservation.DateDebut.Format "02/01/2006"}}
+                    </div>
+                    <div class="detail-item">
+                        <strong>Date de fin :</strong> {{.Reservation.DateFin.Format "02/01/2006"}}
+                    </div>
+                    <div class="detail-item">
+                        <strong>Prix total :</strong> {{.Reservation.PrixTotal}}€
+                    </div>
+                    <div class="detail-item">
+                        <strong>Statut :</strong> {{.Reservation.Status}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="confirmation-actions">
+                <p>Un email de confirmation vous a été envoyé avec tous les détails de votre réservation.</p>
+                <p>Notre équipe vous contactera sous 24h pour confirmer votre réservation.</p>
+
+                <div class="actions">
+                    <a href="/" class="btn btn-primary">Retour à l'accueil</a>
+                    <a href="/velos" class="btn btn-secondary">Voir d'autres vélos</a>
+                </div>
+            </div>
+            {{end}}
+        </div>
+    </div>
+</section>
+{{end}}

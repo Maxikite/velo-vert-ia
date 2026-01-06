@@ -1,0 +1,21 @@
+{{define "content"}}
+<section class="section">
+    <div class="container">
+        <h1>Actualités</h1>
+        <p>Restez informé des événements locaux liés à la mobilité verte et au cyclisme.</p>
+
+        <div class="actualites-list">
+            {{range .Actualites}}
+            <article class="actualites-card full">
+                <img src="{{.Image}}" alt="{{.Titre}}" class="actualites-image">
+                <div class="actualites-content">
+                    <h2>{{.Titre}}</h2>
+                    <span class="actualites-date">{{.Date.Format "02/01/2006"}}</span>
+                    <p>{{.Contenu}}</p>
+                </div>
+            </article>
+            {{end}}
+        </div>
+    </div>
+</section>
+{{end}}

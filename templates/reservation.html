@@ -1,0 +1,105 @@
+{{define "content"}}
+<section class="section">
+    <div class="container">
+        <h1>Réserver un vélo</h1>
+
+        {{if .Error}}
+        <div class="alert alert-error">
+            {{.Error}}
+        </div>
+        {{end}}
+
+        {{if .Velo}}
+        <div class="reservation-summary">
+            <h2>Vélo sélectionné</h2>
+            <div class="velo-summary">
+                <img src="{{.Velo.Image}}" alt="{{.Velo.Nom}}" class="velo-summary-image">
+                <div class="velo-summary-content">
+                    <h3>{{.Velo.Nom}}</h3>
+                    <p>{{.Velo.Description}}</p>
+                    <p class="velo-price-summary">{{.Velo.PrixJour}}€/jour</p>
+                </div>
+            </div>
+        </div>
+
+        <form method="POST" class="reservation-form">
+            <input type="hidden" name="velo_id" value="{{.Velo.ID}}">
+
+            <div class="form-group">
+                <label for="nom">Nom complet *</label>
+                <input type="text" id="nom" name="nom" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="telephone">Téléphone *</label>
+                <input type="tel" id="telephone" name="telephone" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="date_debut">Date de début *</label>
+                    <input type="date" id="date_debut" name="date_debut" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="date_fin">Date de fin *</label>
+                    <input type="date" id="date_fin" name="date_fin" required>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Confirmer la réservation</button>
+                <a href="/velos" class="btn btn-secondary">Retour aux vélos</a>
+            </div>
+        </form>
+        {{else}}
+        <div class="alert alert-error">
+            Aucun vélo sélectionné. <a href="/velos">Retour à la liste des vélos</a>
+        </div>
+        {{end}}
+    </div>
+</section>
+
+<script>
+// Configuration des dates et calcul automatique du prix
+document.addEventListener('DOMContentLoaded', function() {
+    const dateDebut = document.getElementById('date_debut');
+    const dateFin = document.getElementById('date_fin');
+
+    // Définir la date minimum à aujourd'hui
+    const today = new Date().toISOString().split('T')[0];
+    dateDebut.min = today;
+    dateFin.min = today;
+
+    // Par défaut, date de début = aujourd'hui
+    dateDebut.value = today;
+
+    function updatePrix() {
+        if (dateDebut.value && dateFin.value) {
+            const debut = new Date(dateDebut.value);
+            const fin = new Date(dateFin.value);
+            const diffTime = Math.abs(fin - debut);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            if (diffDays > 0) {
+                const prixParJour = {{.Velo.PrixJour}};
+                const total = diffDays * prixParJour;
+                console.log('Prix estimé: ' + total + '€ pour ' + diffDays + ' jours');
+            }
+        }
+    }
+
+    // Mettre à jour la date minimum de fin quand la date de début change
+    dateDebut.addEventListener('change', function() {
+        dateFin.min = dateDebut.value;
+        updatePrix();
+    });
+
+    dateFin.addEventListener('change', updatePrix);
+});
+</script>
+{{end}}

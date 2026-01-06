@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Title}}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <a href="/" class="nav-logo">
+                    <span class="logo-text">🚴 Le Vélo Vert</span>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="/">Accueil</a></li>
+                    <li><a href="/velos">Nos vélos</a></li>
+                    <li><a href="/itineraires">Itinéraires</a></li>
+                    <li><a href="/actualites">Actualités</a></li>
+                    <li><a href="/conseils">Conseils</a></li>
+                    <li><a href="/reservations">Réservations</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        {{template "content" .}}
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Le Vélo Vert</h3>
+                <p>Votre partenaire pour des déplacements écologiques et sportifs.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>📍 Centre-ville<br>
+                📞 01 23 45 67 89<br>
+                ✉️ contact@velovert.fr</p>
+            </div>
+            <div class="footer-section">
+                <h3>Horaires</h3>
+                <p>Lundi - Vendredi: 9h-19h<br>
+                Samedi: 9h-18h<br>
+                Dimanche: 10h-16h</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Le Vélo Vert. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>

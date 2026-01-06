@@ -1,0 +1,35 @@
+{{define "content"}}
+<section class="section">
+    <div class="container">
+        <h1>Itinéraires touristiques</h1>
+        <p>Explorez notre ville et ses environs avec nos itinéraires soigneusement sélectionnés.</p>
+
+        <div class="itineraires-grid">
+            {{range .Itineraires}}
+            <div class="itineraires-card">
+                <img src="{{.Image}}" alt="{{.Nom}}" class="itineraires-image">
+                <div class="itineraires-content">
+                    <h3>{{.Nom}}</h3>
+                    <p>{{.Description}}</p>
+                    <div class="itineraires-info">
+                        <span class="info-item">📏 {{.Distance}} km</span>
+                        <span class="info-item">⏱️ {{.Duree}} min</span>
+                        <span class="info-item difficulty-{{.Difficulte}}">{{.Difficulte}}</span>
+                    </div>
+                    {{if .Points}}
+                    <div class="itineraires-points">
+                        <h4>Points d'intérêt :</h4>
+                        <ul>
+                            {{range .Points}}
+                            <li>{{.}}</li>
+                            {{end}}
+                        </ul>
+                    </div>
+                    {{end}}
+                </div>
+            </div>
+            {{end}}
+        </div>
+    </div>
+</section>
+{{end}}

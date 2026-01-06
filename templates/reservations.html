@@ -1,0 +1,71 @@
+{{define "content"}}
+<section class="section">
+    <div class="container">
+        <h1>Toutes les réservations</h1>
+        <p>Gestion et suivi des réservations de vélos.</p>
+
+        {{if .Reservations}}
+        <div class="reservations-container">
+            <div class="reservations-stats">
+                <div class="stat-card">
+                    <h3>Total des réservations</h3>
+                    <span class="stat-number">{{len .Reservations}}</span>
+                </div>
+                <div class="stat-card">
+                    <h3>En attente</h3>
+                    <span class="stat-number">{{len .Reservations}}</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Confirmées</h3>
+                    <span class="stat-number">0</span>
+                </div>
+            </div>
+
+            <div class="reservations-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Client</th>
+                            <th>Vélo</th>
+                            <th>Date début</th>
+                            <th>Date fin</th>
+                            <th>Prix total</th>
+                            <th>Statut</th>
+                            <th>Contact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{range .Reservations}}
+                        <tr>
+                            <td>{{.NomClient}}</td>
+                            <td>{{.NomVelo}}</td>
+                            <td>{{.DateDebut.Format "02/01/2006"}}</td>
+                            <td>{{.DateFin.Format "02/01/2006"}}</td>
+                            <td>{{.PrixTotal}}€</td>
+                            <td>
+                                <span class="status-badge status-{{.Status}}">
+                                    {{.Status}}
+                                </span>
+                            </td>
+                            <td>
+                                <div class="contact-info">
+                                    <div>{{.Email}}</div>
+                                    <div>{{.Telephone}}</div>
+                                </div>
+                            </td>
+                        </tr>
+                        {{end}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {{else}}
+        <div class="empty-state">
+            <h2>Aucune réservation</h2>
+            <p>Il n'y a pas encore de réservations enregistrées.</p>
+            <a href="/velos" class="btn btn-primary">Voir les vélos disponibles</a>
+        </div>
+        {{end}}
+    </div>
+</section>
+{{end}}

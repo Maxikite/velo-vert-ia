@@ -1,0 +1,34 @@
+{{define "content"}}
+<section class="section">
+    <div class="container">
+        <h1>Nos vélos</h1>
+        <p>Découvrez notre gamme complète de vélos adaptés à tous vos besoins.</p>
+
+        <div class="velos-grid">
+            {{range .Velos}}
+            <div class="velo-card">
+                <img src="{{.Image}}" alt="{{.Nom}}" class="velo-image">
+                <div class="velo-content">
+                    <h3>{{.Nom}}</h3>
+                    <p>{{.Description}}</p>
+                    <div class="velo-info">
+                        <span class="velo-price">{{.PrixJour}}€/jour</span>
+                        <span class="velo-type">{{.Type}}</span>
+                        {{if .Disponible}}
+                        <span class="velo-status available">Disponible</span>
+                        {{else}}
+                        <span class="velo-status unavailable">Indisponible</span>
+                        {{end}}
+                    </div>
+                    {{if .Disponible}}
+                    <a href="/reservation?velo_id={{.ID}}" class="btn btn-small">Réserver</a>
+                    {{else}}
+                    <button class="btn btn-small btn-disabled" disabled>Indisponible</button>
+                    {{end}}
+                </div>
+            </div>
+            {{end}}
+        </div>
+    </div>
+</section>
+{{end}}

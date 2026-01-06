@@ -1,0 +1,22 @@
+{{define "content"}}
+<section class="section">
+    <div class="container">
+        <h1>Conseils de sécurité</h1>
+        <p>Des conseils pratiques pour profiter pleinement de votre location en toute sécurité.</p>
+
+        <div class="conseils-categories">
+            <div class="conseils-grid">
+                {{range .Conseils}}
+                <div class="conseils-card">
+                    <div class="conseils-header">
+                        <h3>{{.Titre}}</h3>
+                        <span class="conseils-category category-{{.Categorie}}">{{.Categorie}}</span>
+                    </div>
+                    <p>{{.Contenu}}</p>
+                </div>
+                {{end}}
+            </div>
+        </div>
+    </div>
+</section>
+{{end}}

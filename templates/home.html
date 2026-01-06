@@ -1,0 +1,83 @@
+{{define "content"}}
+<section class="hero">
+    <div class="hero-container">
+        <h1>Découvrez la mobilité verte</h1>
+        <p>Location de vélos écologiques et itinéraires touristiques dans une ville dynamique</p>
+        <div class="hero-buttons">
+            <a href="/velos" class="btn btn-primary">Voir nos vélos</a>
+            <a href="/itineraires" class="btn btn-secondary">Explorer les itinéraires</a>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2>Nos vélos populaires</h2>
+        <div class="velos-grid">
+            {{range .Velos}}
+            <div class="velo-card">
+                <img src="{{.Image}}" alt="{{.Nom}}" class="velo-image">
+                <div class="velo-content">
+                    <h3>{{.Nom}}</h3>
+                    <p>{{.Description}}</p>
+                    <div class="velo-info">
+                        <span class="velo-price">{{.PrixJour}}€/jour</span>
+                        <span class="velo-type">{{.Type}}</span>
+                    </div>
+                    <a href="/reservation?velo_id={{.ID}}" class="btn btn-small">Réserver</a>
+                </div>
+            </div>
+            {{end}}
+        </div>
+        <div class="text-center">
+            <a href="/velos" class="btn btn-primary">Voir tous nos vélos</a>
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt">
+    <div class="container">
+        <h2>Itinéraires touristiques</h2>
+        <div class="itineraires-grid">
+            {{range .Itineraires}}
+            <div class="itineraires-card">
+                <img src="{{.Image}}" alt="{{.Nom}}" class="itineraires-image">
+                <div class="itineraires-content">
+                    <h3>{{.Nom}}</h3>
+                    <p>{{.Description}}</p>
+                    <div class="itineraires-info">
+                        <span class="info-item">📏 {{.Distance}} km</span>
+                        <span class="info-item">⏱️ {{.Duree}} min</span>
+                        <span class="info-item difficulty-{{.Difficulte}}">{{.Difficulte}}</span>
+                    </div>
+                </div>
+            </div>
+            {{end}}
+        </div>
+        <div class="text-center">
+            <a href="/itineraires" class="btn btn-secondary">Voir tous les itinéraires</a>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2>Actualités</h2>
+        <div class="actualites-grid">
+            {{range .Actualites}}
+            <div class="actualites-card">
+                <img src="{{.Image}}" alt="{{.Titre}}" class="actualites-image">
+                <div class="actualites-content">
+                    <h3>{{.Titre}}</h3>
+                    <p>{{.Contenu}}</p>
+                    <span class="actualites-date">{{.Date.Format "02/01/2006"}}</span>
+                </div>
+            </div>
+            {{end}}
+        </div>
+        <div class="text-center">
+            <a href="/actualites" class="btn btn-primary">Voir toutes les actualités</a>
+        </div>
+    </div>
+</section>
+{{end}}
